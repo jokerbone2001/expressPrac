@@ -1,6 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p= contents
+  h1  a list of all tweets
+  each i in tweets
+    h2 ID : #{i.id}
+    p Message : #{i.message}
+    h3 Author : #{i.author}
+    p Date Time : #{i.datatime}
   
