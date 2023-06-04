@@ -1,7 +1,32 @@
 var express = require('express');
 var router = express();
+const fs = require('fs');
+
+
 var data = [];
 /* GET home page. */
+
+router.get('/book', function(req, res, next) {
+  fs.readFile(`books.json`,(err,data) =>{
+    if (err) {
+        res.write(err.toString()); //write a response to the client
+    } else {
+      try {
+        var jsonData = JSON.parse(data);
+        console.log( jsonData[0]);
+        res.render('book', {books: jsonData});
+
+      } catch (err) {
+        res.status(500).send(err.toString());
+      }
+      
+    }
+    res.end(); //end the response
+  });
+
+});
+
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });

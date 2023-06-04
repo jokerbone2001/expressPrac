@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  each i in books
+    h2 title : #{i.title}
+    p isbn : #{i.isbn}
+    p pageCount : #{i.pageCount}
+    //- convert string to Date object and format it
+    p publishedDate : #{i.publishedDate && i.publishedDate.$date ? i.publishedDate.$date : 'N/A'}
+    //- add img tag for displaying the thumbnail
+    img(src=i.thumbnailUrl, alt=i.title)
+    p shortDescription : #{i.shortDescription}
+    p longDescription : #{i.longDescription}
+    p status : #{i.status}
+    p authors : #{i.authors}
+    p categories : #{i.categories}
+
+  
