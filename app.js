@@ -3,6 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+
+const mongoDB = "mongodb+srv://jokerbone:xxh2001111@hackhub.dfliif2.mongodb.net/hackhub";
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
