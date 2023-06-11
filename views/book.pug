@@ -1,19 +1,15 @@
 extends layout
 
 block content
- h1 Welcome to my books
-  each i in books
-    h2 title : #{i.title}
-    p isbn : #{i.isbn}
-    p pageCount : #{i.pageCount}
-    //- convert string to Date object and format it
-    p publishedDate : #{i.publishedDate && i.publishedDate.$date ? i.publishedDate.$date : 'N/A'}
-    //- add img tag for displaying the thumbnail
-    img(src=i.thumbnailUrl, alt=i.title)
-    p shortDescription : #{i.shortDescription}
-    p longDescription : #{i.longDescription}
-    p status : #{i.status}
-    p authors : #{i.authors}
-    p categories : #{i.categories}
-
-  
+  h1 Welcome to my books
+  .content-wrapper
+    each i in books
+      .book-container
+          img(src=i.thumbnailUrl, alt=i.title)
+          h2.book-title #{i.title}
+          p.book-info ISBN: #{i.isbn}
+          p.book-info Page Count: #{i.pageCount}
+          p.book-info Published Date: #{i.publishedDate && i.publishedDate.$date ? i.publishedDate.$date : 'N/A'}
+          p.book-info Authors: #{i.authors}
+          p.book-info Categories: #{i.categories}
+    
